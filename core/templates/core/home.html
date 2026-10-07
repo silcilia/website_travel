@@ -1,0 +1,136 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Zhain Tour and Travel | Amanah · Nyaman · Berkesan{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">AMANAH • NYAMAN • BERKESAN</span>
+      <h1>Liburan nggak perlu ribet.<br><span>Biarkan kami yang atur.</span></h1>
+      <p>Temukan paket wisata domestik dan internasional yang praktis, nyaman, dan bisa disesuaikan dengan kebutuhan perjalananmu.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#paket">Lihat Paket Wisata <span>→</span></a>
+        <a class="btn btn-ghost" href="#booking">Konsultasi Gratis</a>
+      </div>
+      <div class="hero-trust">
+        <span>✓ Itinerary jelas</span><span>✓ Transportasi wisata</span><span>✓ Bisa custom</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll untuk menjelajah ↓</div>
+</section>
+
+<section class="quick-strip">
+  <div class="container quick-grid">
+    <div><b>10+</b><span>Destinasi pilihan</span></div>
+    <div><b>8</b><span>Layanan perjalanan</span></div>
+    <div><b>Custom</b><span>Itinerary fleksibel</span></div>
+    <div><b>1 chat</b><span>Untuk mulai booking</span></div>
+  </div>
+</section>
+
+<section class="section" id="layanan">
+  <div class="container">
+    <div class="section-heading">
+      <div><span class="kicker">LAYANAN KAMI</span><h2>Perjalanan untuk berbagai kebutuhan.</h2></div>
+      <p>Dari liburan santai sampai perjalanan perusahaan, pilih yang sesuai atau ceritakan kebutuhanmu dan kami bantu susun.</p>
+    </div>
+    <div class="service-grid">
+      {% for title, desc in services %}
+      <article class="service-card">
+        <div class="service-number">0{{ forloop.counter }}</div>
+        <h3>{{ title }}</h3><p>{{ desc }}</p><a href="#booking">Tanya detail →</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft" id="tentang">
+  <div class="container about-grid">
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1400&q=85" alt="Perjalanan wisata">
+      <div class="about-badge"><strong>ZHAIN</strong><span>Tour & Travel</span></div>
+    </div>
+    <div class="about-copy">
+      <span class="kicker">TENTANG ZHAIN</span>
+      <h2>Travel partner yang mengutamakan rasa aman dan nyaman.</h2>
+      <p>Zhain Tour and Travel hadir untuk membantu pelanggan menikmati perjalanan dengan perencanaan yang lebih sederhana. Kami menyediakan pilihan paket wisata, transportasi, dan perjalanan custom untuk kebutuhan pribadi maupun kelompok.</p>
+      <div class="vm-grid">
+        <div><span>01</span><h3>Visi</h3><p>Menjadi partner perjalanan yang terpercaya dan memberikan pengalaman wisata yang berkesan.</p></div>
+        <div><span>02</span><h3>Misi</h3><p>Memberikan layanan yang ramah, itinerary yang jelas, pilihan perjalanan yang fleksibel, dan pelayanan yang bertanggung jawab.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="paket">
+  <div class="container">
+    <div class="section-heading">
+      <div><span class="kicker">PAKET WISATA</span><h2>Pilih destinasi, kami bantu urus sisanya.</h2></div>
+      <a class="text-link" href="#booking">Minta itinerary →</a>
+    </div>
+    <div class="package-grid">
+      {% for item in packages %}
+      <article class="package-card">
+        <div class="package-photo"><img src="{{ item.image }}" alt="{{ item.name }}"><span>{{ item.tag }}</span></div>
+        <div class="package-body"><p>{{ item.location }}</p><h3>{{ item.name }}</h3><a href="#booking" data-package="{{ item.name }}">Tanya Paket →</a></div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section destination-section" id="destinasi">
+  <div class="container destination-inner">
+    <div>
+      <span class="kicker light">DESTINASI</span>
+      <h2>Dari pulau sampai negeri tetangga.</h2>
+      <p>Jelajahi destinasi pilihan mulai dari Palembang, Lampung, Bangka, Bali-Lombok, hingga Malaysia, Singapore, dan Thailand.</p>
+    </div>
+    <div class="destination-tags">
+      <span>Palembang</span><span>Pahawang</span><span>Bangka</span><span>Bali</span><span>Lombok</span><span>Bandung</span><span>Bromo</span><span>Yogyakarta</span><span>Malaysia</span><span>Singapore</span><span>Bangkok</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="galeri">
+  <div class="container">
+    <div class="section-heading">
+      <div><span class="kicker">GALERI & TESTIMONI</span><h2>Bayangkan dulu perjalanannya.</h2></div>
+      <p class="small-note">Dokumentasi perjalanan Zhain dan testimoni pelanggan</p>
+    </div>
+    <div class="gallery-grid">
+      {% for title, image in gallery %}<div class="gallery-item"><img src="{{ image }}" alt="{{ title }}"><span>{{ title }}</span></div>{% endfor %}
+    </div>
+    <div class="testimonial-row">
+      <blockquote>“Pelayanannya ramah dan itinerary-nya jelas. Tinggal berangkat dan menikmati perjalanan.”<cite>— Testimoni pelanggan</cite></blockquote>
+      <blockquote>“Untuk rombongan, kebutuhan transportasi dan jadwal bisa dibicarakan dari awal.”<cite>— Testimoni pelanggan</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="section booking-section" id="booking">
+  <div class="container booking-grid">
+    <div class="booking-copy">
+      <span class="kicker">KONTAK & CARA BOOKING</span>
+      <h2>Sudah punya tujuan? Yuk, ngobrol.</h2>
+      <p>Isi form singkat. Setelah dikirim, kamu akan diarahkan ke WhatsApp untuk melanjutkan konsultasi dengan tim Zhain.</p>
+      <div class="steps">
+        <div><b>01</b><span><strong>Pilih paket</strong><small>Pilih destinasi atau tulis custom trip.</small></span></div>
+        <div><b>02</b><span><strong>Konsultasi</strong><small>Diskusikan tanggal, jumlah peserta, dan kebutuhan.</small></span></div>
+        <div><b>03</b><span><strong>Booking</strong><small>Konfirmasi itinerary dan detail perjalanan.</small></span></div>
+      </div>
+    </div>
+    <form class="booking-form" action="{% url 'core:booking' %}" method="post">
+      {% csrf_token %}
+      <label>Nama lengkap<input type="text" name="name" placeholder="Nama kamu" required></label>
+      <label>No. WhatsApp<input type="tel" name="phone" placeholder="08xxxxxxxxxx" required></label>
+      <label>Paket / destinasi<select name="package"><option value="">Pilih destinasi</option>{% for item in packages %}<option value="{{ item.name }}">{{ item.name }}</option>{% endfor %}<option value="Custom Trip">Custom Trip</option></select></label>
+      <label>Pesan / kebutuhan<textarea name="message" rows="4" placeholder="Contoh: 20 orang, 3 hari 2 malam, bulan depan..."></textarea></label>
+      <button class="btn btn-primary btn-full" type="submit">Lanjut ke WhatsApp →</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

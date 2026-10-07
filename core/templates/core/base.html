@@ -1,0 +1,67 @@
+{% load static %}
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Zhain Tour and Travel — Amanah, Nyaman, Berkesan.">
+  <title>{% block title %}Zhain Tour and Travel{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Zhain Tour and Travel">
+        <img src="{% static 'core/img/logo-zhain.png' %}" alt="Logo Zhain Tour and Travel">
+      </a>
+      <button class="menu-toggle" aria-label="Buka menu">☰</button>
+      <nav class="nav-links">
+        <a href="#top">Beranda</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#paket">Paket Wisata</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#destinasi">Destinasi</a>
+        <a href="#galeri">Galeri</a>
+        <a class="nav-cta" href="#booking">Booking</a>
+      </nav>
+    </div>
+  </header>
+
+  {% if messages %}
+  <div class="flash-wrap">
+    {% for message in messages %}<div class="flash {{ message.tags }}">{{ message }}</div>{% endfor %}
+  </div>
+  {% endif %}
+
+  {% block content %}{% endblock %}
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <img class="footer-logo" src="{% static 'core/img/logo-zhain.png' %}" alt="Zhain Tour and Travel">
+        <p>Teman perjalanan untuk liburan yang aman, nyaman, dan berkesan.</p>
+      </div>
+      <div>
+        <h4>Menu</h4>
+        <a href="#tentang">Tentang Zhain</a>
+        <a href="#paket">Paket Wisata</a>
+        <a href="#layanan">Layanan Kami</a>
+        <a href="#booking">Cara Booking</a>
+      </div>
+      <div>
+        <h4>Hubungi Kami</h4>
+        <p>WhatsApp: <strong>+6285129537429</strong></p>
+        <p>Instagram: <strong>@zhain.tourtravel</strong></p>
+        <p>Palembang, Sumatera Selatan</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Zhain Tour and Travel. All rights reserved.</div>
+  </footer>
+
+  <a class="floating-wa" href="{{ whatsapp_url }}" target="_blank" rel="noopener" aria-label="Chat WhatsApp">WA</a>
+  <script src="{% static 'core/js/main.js' %}"></script>
+</body>
+</html>
